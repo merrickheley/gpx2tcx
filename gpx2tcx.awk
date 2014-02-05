@@ -125,24 +125,22 @@ END {
 
   printf "    </Activity>\n  </Activities>\n"
 
-  split("$Revision: 301 $", REVISION, " ")
-  split("$Date: 2012-02-26 17:23:24 +1100 (Sun, 26 Feb 2012) $", DATE, " ")
   printf "\n  <Author xsi:type=\"Application_t\"> \n\
-    <Name>Paul Colby's GPX/HRM to TCX Converter</Name> \n\
+    <Name>Merrick Heleys's GPX/HRM to TCX Converter</Name> \n\
     <Build> \n\
       <Version> \n\
         <VersionMajor>1</VersionMajor> \n\
         <VersionMinor>1</VersionMinor> \n\
         <BuildMajor>1</BuildMajor> \n\
-        <BuildMinor>%d</BuildMinor> \n\
+        <BuildMinor>0</BuildMinor> \n\
       </Version> \n\
       <Type>Internal</Type> \n\
-      <Time>%sT%s%s</Time> \n\
-      <Builder>PaulColby</Builder> \n\
+      <Time>%s</Time> \n\
+      <Builder>MerrickHeley</Builder> \n\
     </Build> \n\
     <LangID>EN</LangID> \n\
     <PartNumber>636-F6C62-79</PartNumber> \n\
-  </Author>\n", REVISION[2], DATE[2], DATE[3], DATE[4]
+  </Author>\n", "Wed Feb  5 23:59:03 EST 2014"
 
   printf "\n</TrainingCenterDatabase>\n"
 }
