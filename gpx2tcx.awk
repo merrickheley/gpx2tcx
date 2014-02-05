@@ -38,8 +38,10 @@ BEGIN {
     } else if (($1 == "[HRData]") || ($1 == "[HRData]\r")) {
       FOUND_HRDATA="$1"
     } else if (($1 == "[Note]") || ($1 == "[Note]\r")) {
-      getline NOTE <HRMFILE
-      NOTE = substr(NOTE, 0, length(NOTE)-1)
+      while ((getline <HRMFILE > 0) && !($0 == "\r" || $0 == "")) {
+        NOTE = NOTE $0 "\n"
+      }
+      NOTE = substr(NOTE, 0, length(NOTE)-2)
     }
   }
   FS="[<>= \"]+"
