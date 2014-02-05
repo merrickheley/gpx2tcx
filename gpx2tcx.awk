@@ -37,6 +37,9 @@ BEGIN {
 	  getline ODOMETER     <HRMFILE # Not used.
     } else if (($1 == "[HRData]") || ($1 == "[HRData]\r")) {
       FOUND_HRDATA="$1"
+    } else if (($1 == "[Note]") || ($1 == "[Note]\r")) {
+      getline NOTE <HRMFILE
+      NOTE = substr(NOTE, 0, length(NOTE)-1)
     }
   }
   FS="[<>= \"]+"
@@ -114,6 +117,10 @@ BEGIN {
 }
 
 END {
+  if (NOTE) {
+     printf "      <Notes>%s</Notes>\n", NOTE
+  }
+
   printf "    </Activity>\n  </Activities>\n"
 
   split("$Revision: 301 $", REVISION, " ")
